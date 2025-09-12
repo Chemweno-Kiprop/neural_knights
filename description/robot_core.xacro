@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
+    <xacro:include filename="inertial_macros.xacro"/>
 
     <material name="white">
         <color rgba="1 1 1 1"/>
@@ -32,28 +33,56 @@
         <visual>
             <origin xyz="0.105 0 0.05" rpy="0 0 0"/>
             <geometry>
-                <cylinder radius="0.11" length="0.10" />
+                <cylinder radius="0.105" length="0.10" />
             </geometry>
             <material name="white"/>
         </visual>
          <collision>
             <origin xyz="0.105 0 0.05" rpy="0 0 0"/>
             <geometry>
-                <cylinder radius="0.11" length="0.10" />
+                <cylinder radius="0.105" length="0.10" />
             </geometry>
         </collision>
+        <xacro:inertial_cylinder mass="0.8" length="0.1" radius="0.11">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
     </link>
     
 
     <!-- LEFT WHEEL -->
-        <joint name="left_wheel_joint" type="continuous">
+    <joint name="left_wheel_joint" type="continuous">
         <parent link="base_link"/>
         <child link="left_wheel"/>
         <origin xyz="0 0.127 0" rpy="-${pi/2} 0 0"/>
         <axis xyz="0 0 1"/>
-        </joint>
+    </joint>
 
-        <link name="left_wheel">
+    <link name="left_wheel">
+            <visual>
+                <geometry>
+                    <cylinder length="0.04" radius="0.0425" />
+                </geometry>
+                <material name="blue"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <cylinder length="0.04" radius="0.0425" />
+                </geometry>
+            </collision>
+            <xacro:inertial_cylinder mass="0.1" length="0.04" radius="0.0425">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            </xacro:inertial_cylinder>
+    </link>
+
+
+     <!-- RIGHT WHEEL -->
+    <joint name="right_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="right_wheel"/>
+        <origin xyz="0 -0.127 0" rpy="-${pi/2} 0 0"/>
+        <axis xyz="0 0 -1"/>
+    </joint>
+    <link name="right_wheel">
         <visual>
             <geometry>
                 <cylinder length="0.04" radius="0.0425" />
@@ -65,29 +94,9 @@
                 <cylinder length="0.04" radius="0.0425" />
             </geometry>
         </collision>
-        </link>
-
-
-     <!-- RIGHT WHEEL -->
-    <joint name="right_wheel_joint" type="continuous">
-        <parent link="base_link"/>
-        <child link="right_wheel"/>
-        <origin xyz="0 -0.127 0" rpy="-${pi/2} 0 0"/>
-        <axis xyz="0 0 -1"/>
-    </joint>
-
-    <link name="right_wheel">
-    <visual>
-        <geometry>
-            <cylinder length="0.04" radius="0.0425" />
-        </geometry>
-        <material name="blue"/>
-    </visual>
-    <collision>
-        <geometry>
-            <cylinder length="0.04" radius="0.0425" />
-        </geometry>
-    </collision>
+        <xacro:inertial_cylinder mass="0.1" length="0.04" radius="0.0425">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
     </link>
 
 
@@ -96,7 +105,7 @@
     <joint name="frontCaster_wheel_joint" type="fixed">
         <parent link="chassis"/>
         <child link="frontCaster_wheel"/>
-        <origin xyz="0.21 0 -0.0425" rpy="0 0 0"/>
+        <origin xyz="0.19 0 -0.0425" rpy="0 0 0"/>
     </joint>
 
     <link name="frontCaster_wheel">
@@ -111,6 +120,9 @@
                 <sphere radius="0.0425" />
             </geometry>
         </collision>
+        <xacro:inertial_sphere mass="0.1" radius="0.0425">
+             <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_sphere>
     </link>
 
 
@@ -119,7 +131,7 @@
     <joint name="backCaster_wheel_joint" type="fixed">
         <parent link="chassis"/>
         <child link="backCaster_wheel"/>
-        <origin xyz="0 0 -0.0425" rpy="0 0 0"/>
+        <origin xyz="0.02 0 -0.0425" rpy="0 0 0"/>
     </joint>
 
     <link name="backCaster_wheel">
@@ -134,6 +146,9 @@
                 <sphere radius="0.0425" />
             </geometry>
         </collision>
+        <xacro:inertial_sphere mass="0.1" radius="0.0425">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_sphere>
     </link>
 
 
