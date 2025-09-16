@@ -24,9 +24,7 @@
 
   <gazebo>
     <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
-      <ros2_control>
-<parameters>../config/my_controllers.yaml</parameters>
-      </ros2_control>
+<parameters>$(find neural_knights)/config/my_controllers.yaml</parameters>
     </plugin>
   </gazebo>
 
