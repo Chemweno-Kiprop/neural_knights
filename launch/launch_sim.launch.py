@@ -52,7 +52,7 @@ def generate_launch_description():
     )
 
     # Delay spawner to wait for Gazebo to be ready
-    delayed_spawn = TimerAction(period=5.0, actions=[spawn_entity])
+    delayed_spawn = TimerAction(period=15.0, actions=[spawn_entity])
 
     return LaunchDescription([
         rsp,
