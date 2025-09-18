@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <!-- ros2_control setup -->
+  <!-- ros2_control configuration -->
   <ros2_control name="GazeboSystem" type="system">
     <hardware>
-      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+    <plugin>ros_gz_sim_ros2_control/GazeboSystem</plugin>
     </hardware>
 
     <joint name="left_wheel_joint">
@@ -26,11 +26,7 @@
     </joint>
   </ros2_control>
 
-  <!-- Gazebo plugin to load ros2_control -->
-  <gazebo>
-    <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
-      <parameters>$(find neural_knights)/config/my_controllers.yaml</parameters>
-    </plugin>
-  </gazebo>
+  <!-- 🔴 Remove Gazebo classic plugin block -->
+  <!-- In Fortress, ros2_control is started from your launch file using ros2_control_node -->
 
 </robot>
