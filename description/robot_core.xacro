@@ -200,4 +200,4 @@
     <gazebo reference="raspi_box"> 
         <material>Gazebo/Black </material>
     </gazebo>
-</robot>
+</robot>                                                                

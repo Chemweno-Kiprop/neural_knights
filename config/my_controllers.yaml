@@ -3,13 +3,14 @@ controller_manager:
     update_rate: 30
     use_sim_time: true
 
-   
+    # Controller type definitions
     diff_cont:
       type: diff_drive_controller/DiffDriveController
 
     joint_broad:
       type: joint_state_broadcaster/JointStateBroadcaster
 
+# Separate section for controller parameters
 diff_cont:
   ros__parameters:
     publish_rate: 30.0
@@ -18,5 +19,4 @@ diff_cont:
     right_wheel_names: ['right_wheel_joint']
     wheel_separation: 0.254
     wheel_radius: 0.0425
-
     use_stamped_vel: false
