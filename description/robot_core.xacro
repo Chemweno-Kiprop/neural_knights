@@ -145,7 +145,7 @@
 
 
 
-     <!-- back CASTER WHEEL -->
+     <!-- back CASTER WHEEL move-->
     <joint name="backCaster_wheel_joint" type="fixed">
         <parent link="chassis"/>
         <child link="backCaster_wheel"/>
